@@ -16,7 +16,6 @@ Here are some of the different documents online for more specifics on using the 
 
 ### What is The Sidecar
 
--------------------------------------------------
 It is a data dog agent in a docker container running along side of your services that you can send
 metrics to using UDP. The sidecar will then do the aggredation and sending of those metrics to
 datadog for you.
@@ -59,7 +58,6 @@ tags to distinguish between items such as the aws account and environment.
 
 ### The Code Set Up
 
--------------------------------------------------
 Here is an example of how to set up a client.
 
     ddClient, err := statsd.NewBuffered(config.Endpoint, 1)
@@ -89,7 +87,6 @@ Here is an example of how you would send a Gauge and and Increment:
 
 ### The Container Set Up
 
--------------------------------------------------
 Here is a snippet of the docker compose set up to run the sidecar along side of your
 current services.
 
@@ -128,3 +125,11 @@ failed to send to the sidecar and the project kept running.
 
 I would recomend creating some sort of `logIfError` function to wrap your calls to the sidecar in
 so that you can see in your projects logs that the message has failed to send to the sidecar.
+
+### Packages Used
+
+[github.com/DataDog/datadog-go/statsd](https://github.com/DataDog/datadog-go/statsd)
+
+[github.com/kelseyhightower/envconfig](https://github.com/kelseyhightower/envconfig)
+
+[github.com/pkg/errors](https://github.com/pkg/errors)
