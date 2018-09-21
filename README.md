@@ -6,7 +6,6 @@ and then how to configure the client in your go.
 
 ## DataDog Sidecar
 
--------------------------------------------------
 Here are some of the different documents online for more specifics on using the sidecar.
 
 [DataDog Docs](https://docs.datadoghq.com/developers/dogstatsd/)
@@ -27,7 +26,6 @@ wait for the request to complete.
 
 ## The DataDog Client
 
--------------------------------------------------
 This is the structure of the statsd client that we will use to communicate with the sidecar:
 
     type Client struct {
@@ -111,7 +109,6 @@ you are doing something really special it will get the job done.
 
 ## The Demo
 
--------------------------------------------------
 Ensure that you have a `.env` file with these variables set before you build and run.
 
     DD_API_KEY
