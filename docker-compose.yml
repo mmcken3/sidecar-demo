@@ -1,0 +1,26 @@
+version: '3.6'
+
+services:
+  demo:
+    container_name: sidecar-demo
+    image: sidecar-demo/demo
+    build:
+      context: cmd
+      dockerfile: Dockerfile
+      args:
+        package: cmd
+    command: ["/go/bin/cmd"]
+    env_file:
+      - .env
+    ports:
+      - "8002:8002"
+
+  pf_dd_agent:
+    image: datadog/agent:latest
+    ports:
+      - 8125:8125/udp
+      - 8126:8126/tcp
+    environment:
+      DD_API_KEY: $DD_API_KEY
+    logging:
+      driver: none
