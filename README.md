@@ -1,6 +1,6 @@
 # DogStatsD Sidecar Demo
 
-This is a super basic demo on the basics of setting up a DogStatsD Data Dog docker sidecar in go.
+This is a basic demo on the how to set up a DogStatsD Data Dog docker sidecar in go.
 We will walk through how the sidecar docker needs to be set up in compose
 and then how to configure the client in your go.
 
@@ -16,7 +16,7 @@ Here are some of the different documents online for more specifics on using the 
 
 ### What is The Sidecar
 
-It is a data dog agent in a docker container running along side of your services that you can send
+It is a data dog agent in the form of a docker container running along side of your services that you can send
 metrics to using UDP. The sidecar will then do the aggredation and sending of those metrics to
 datadog for you.
 
@@ -90,7 +90,7 @@ Here is an example of how you would send a Gauge and and Increment:
 Here is a snippet of the docker compose set up to run the sidecar along side of your
 current services.
 
-    pf_dd_agent:
+    demo_dd_agent:
         image: datadog/agent:latest
         ports:
             - 8125:8125/udp

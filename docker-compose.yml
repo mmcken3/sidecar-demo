@@ -15,7 +15,7 @@ services:
     ports:
       - "8002:8002"
 
-  pf_dd_agent:
+  demo_dd_agent:
     image: datadog/agent:latest
     ports:
       - 8125:8125/udp
