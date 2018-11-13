@@ -85,6 +85,18 @@ Here is an example of how you would send a Gauge and and Increment:
     ddClient.Incr("task.failed", nil, 1)
     ddClient.Gauge("pipeline.lag", float64Value, nil, 1)
 
+#### Tags
+
+When using this sidecar to track metrics you may also want to take advantage of tags. In the code
+there are a few small examples of what to do with tags in order to use them. An example of when
+you want to use them is tracking the same metric like a req_timeout across two different methods,
+but you need a way to tell the metrics apart.
+
+The tag for this line sending and Incr would be `type:somethingspecial`. This param is actually a
+slice so you could send in a list of tags if you want too.
+
+    ddClient.Incr("task.happened", []string{"type:somethingspecial"}, 1)
+
 ### The Container Set Up
 
 Here is a snippet of the docker compose set up to run the sidecar along side of your

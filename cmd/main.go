@@ -73,9 +73,26 @@ func main() {
 
 	// Send the successful converted value count a task complete notification to the sidecar.
 	ddClient.Gauge("converted.count", float64(len(convValues)), nil, 1)
+
+	// Example of how you can use tags for metrics that you want to track
+	// across different functions in code
+	somethingNormal(ddClient)
+	somethingSpecial(ddClient)
+
 	ddClient.Incr("task.complete", nil, 1)
 
 	time.Sleep(10000 * time.Millisecond)
 	log.Println("Done!")
 	return
+}
+
+func somethingSpecial(ddClient *statsd.Client) {
+	log.Println("Doing something special")
+	ddClient.Incr("task.happened", []string{"type:somethingspecial"}, 1)
+	return
+}
+
+func somethingNormal(ddClient *statsd.Client) {
+	log.Println("Doing something normal")
+	ddClient.Incr("task.happened", []string{"type:somethingNormal"}, 1)
 }
